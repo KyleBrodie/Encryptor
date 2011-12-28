@@ -16,6 +16,14 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 @SuppressWarnings("serial")
+/***
+ * Auto-generated source for GUI, built with WindowBuilder.
+ * Provides user interface for Encryptor functions
+ * 
+ * @author KyleBrodie
+ * @version 1.0
+ *
+ */
 public class EncryptorGUI {
 
 	private JFrame frmEncryptor;
@@ -182,8 +190,12 @@ public class EncryptorGUI {
 			putValue(SHORT_DESCRIPTION, "action that calls the encryptor's encrypt method");
 		}
 		public void actionPerformed(ActionEvent e) {
-			String result = Encryptor.encryptOTP(txtText.getText(), txtKey.getText());
-			ans.setText(result);
+			try {
+				String result = Encryptor.encryptOTP(txtText.getText(), txtKey.getText());
+				ans.setText(result);
+			} catch (IllegalArgumentException ie) {
+				ans.setText(ie.getMessage());
+			}
 		}
 	}
 	private class DecryptAction extends AbstractAction {
@@ -192,8 +204,12 @@ public class EncryptorGUI {
 			putValue(SHORT_DESCRIPTION, "action that calls the encryptor's decrypt method");
 		}
 		public void actionPerformed(ActionEvent e) {
-			String result = Encryptor.decryptOTP(txtText.getText(), txtKey.getText());
-			ans.setText(result);
+			try {	
+				String result = Encryptor.decryptOTP(txtText.getText(), txtKey.getText());
+				ans.setText(result);
+			} catch (IllegalArgumentException ie) {
+				ans.setText(ie.getMessage());
+			}
 		}
 	}
 	private class RotAction extends AbstractAction {
